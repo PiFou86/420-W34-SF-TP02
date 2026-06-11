@@ -4,17 +4,17 @@
 
 ### 1.1 - Déroulement du TP
 
-- Remise du travail: 6 octobre 2024, 23:59
+- Remise du travail: mercredi 1 juillet 2024, 23:59
 - Ce travail est réalisé en équipe de 2 personnes et seuls les membres de cette équipe y contribuent
 - Toutes les réponses fournies doivent être originales (produites par l’étudiant ou un membre de l’équipe)
 - Toute copie de code, de portion de code, d’algorithme ou de texte doit faire mention de sa source
 - L’emprunt ou la copie de code ou de portions de code est interdite
 - Tout constat de plagiat, tricherie ou fraude sera automatiquement déclaré à la Direction et les sanctions prévues seront appliquées
-- L'utilisation de l'IA est considérée comme du plagiat si non documentée en tant que source
-- Tout code copié mais documenté comme provenant d'une autre source sera noté à 0 mais ne sera pas considéré comme du plagiat
+- L'utilisation de l'IA et de toutes autres sources est considérée comme du plagiat si non documentée en tant que source (Si ce n'est pas dans votre cours, c'est qu'il faut une référence). Par exemple, si vous utilisez une requête trouvée sur StackOverflow, vous devez faire un commentaire dans votre code indiquant que vous avez utilisé cette requête et fournir un lien vers la source. Si vous utilisez une requête générée par une IA, vous devez faire un commentaire dans votre code indiquant que vous avez utilisé une IA pour générer cette requête et fournir le lien de partage de la discussion avec l'IA. 
+- Toute source externe au matériel du cours doit être explicitement documentée ou sera considéré comme du plagiat
 - Vous devez utiliser votre dépôt Git pour faire votre travail : si une situation particulière est détectée, vos commits moduleront votre note dans le groupe et peut même aller jusqu'à un zéro en cas de non participation. (Attention à l'utilisation de 4 mains sur un compte Git !)
-- Durée : 4 x 3 heures + travail à la maison
-- Plate forme : SQL Server, .Net 8.0, Entity Framework, Visual Studio 2022, Git, GitHub, Léa
+- Durée : 3 x 3 heures + travail à la maison
+- Plate forme : Microsoft SQL Server, .Net 8.0, Entity Framework, Visual Studio 2022, Git, GitHub, Léa
 - Le sujet peut être mis à jour à cette adresse : https://github.com/PiFou86/420-W34-SF-TP02/blob/main/README.md
 
 ### 1.2 - À remettre sur la plateforme d'enseignement Léa
@@ -23,7 +23,7 @@
 - Votre code source C# dans le répertoire src/CSharp sur Git
 - Le contenu de ce répertoire zippé sur Léa avant la date indiquée
 
-En résumé, vous pouvez simplement archiver le contenu de votre dépôt Git qui devrait contenir tous ces éléments au moment de la remise.
+En résumé, vous devez simplement archiver le contenu de votre dépôt Git qui devrait contenir tous ces éléments au moment de la remise.
 
 ## 2 - Contexte
 
@@ -31,7 +31,60 @@ Vous devez créer une première version d'une base de données permettant de mod
 
 Voici l'ERD qui vous a été fourni par votre analyste :
 
-![ERD logique](images/ERD/car_reservation/erd_car_reservation_logique.svg)
+```mermaid
+erDiagram
+
+    VOITURE {
+        string numeroSerie
+        string marque
+        string modele
+        string couleur
+        date dateAchat
+        date dateRevision
+        string descriptionFr
+    }
+
+    LOCATION {
+        date dateDebutPrevue
+        date dateDebutReelle
+        date dateFinPrevue
+        date dateFinReelle
+        int odometreDebut
+        int odometreFin
+        string essenceDebut
+        string essenceFin
+    }
+
+    CLIENT {
+        string nom
+        string prenom
+        date dateNaissance
+        string numeroPermis
+        string numeroTelephone
+    }
+
+    FACTURE {
+        date dateFacture
+        decimal montantHorsTaxes
+        string description
+        decimal montantTaxesTVQ
+        decimal montantTaxesTPS
+        decimal montantTotal
+    }
+
+    FACTURE_LIGNE {
+        decimal prixUnitaire
+        int quantite
+        string description
+        decimal tauxTaxesTVQ
+        decimal tauxTaxesTPS
+    }
+
+    CLIENT ||--o{ LOCATION : effectue
+    VOITURE ||--o{ LOCATION : est_louee_dans
+    LOCATION ||--o| FACTURE : genere
+    FACTURE ||--o{ FACTURE_LIGNE : contient
+```
 
 Votre analyste vous a indiqué quelques renseignements supplémentaires :
 
