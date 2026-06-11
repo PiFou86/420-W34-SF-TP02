@@ -117,7 +117,7 @@ Dans ce TP, une location représente à la fois une réservation, une location e
 - Modifier le fichier `AUTHORS.md` (-10 points si non fait)
 - Compléter l'ERD : types, PK, FK (5 points) - Équipier 1
 - Écrire le script SQL permettant d'implanter l'ERD (20 points : clefs, contraintes, champs calculées, tables supplémentaires, etc.) - Équipier 2
-- Créer des données de test (10 points) - Équipier 1
+- Créer des données de test et de configuration (10 points) - Équipier 1
 - Écrire les scripts SQL (un ou plusieurs fichiers dont le nom contient une numérotation indiquant l'ordre des scripts) suivantes (30 points) :
   - Créer une procédure permettant de renvoyer les voitures disponibles pour une période donnée (une période est définie par une date de début et une date de fin) (5 points) - Équipier 1
   - Créer une procédure permettant de renvoyer l'ensemble des voitures qui n'ont pas été louées depuis plus de 60 jours (5 points) - Équipier 2
@@ -127,7 +127,7 @@ Dans ce TP, une location représente à la fois une réservation, une location e
 - Créez une application console C# qui permet (35 points) : créez des classes partielles dont les fichiers sont préfixés par `Equipier1_` et `Equipier2_` pour les dépôts, couche métier, UI
   - Afficher les voitures à préparer ou à recevoir pour la journée courante (prises de possession / retours) (5 points) - Équipier 2
   - Créer une location (5 points) - Équipier 1
-  - Créer une personne (5 points) - Équipier 2
+  - Créer un client (5 points) - Équipier 2
   - Créer une voiture (5 points) - Équipier 1
   - Effectuer la prise de possession d'une voiture :  (5 points) - Équipier 2
   - Effectuer le retour d'une voiture (5 points) - Équipier 1
@@ -136,13 +136,15 @@ Dans ce TP, une location représente à la fois une réservation, une location e
 
 Résumé des points :
 
-| Points | Description |
-|--------|-------------|
-| 5 | Données de configuration de l'application |
-| 20 | Implémentation de l'ERD |
-| 10 | Données de test |
-| 30 | Procédures |
-| 40 | Application console C# |
+| Description                               | Équipier 1 | Équipier 2 |   Total |
+| ----------------------------------------- | ---------: | ---------: | ------: |
+| Compléter l'ERD : types, PK, FK           |          5 |          0 |       5 |
+| Implémentation de l'ERD en SQL            |          0 |         20 |      20 |
+| Données de test                           |         10 |          0 |      10 |
+| Procédures SQL                            |         20 |         10 |      30 |
+| Application console C#                    |         20 |         20 |      40 |
+| **Total**                                 |     **55** |     **55** | **110** |
+
 
 ## 4 - Exemples de factures
 
