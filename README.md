@@ -99,7 +99,13 @@ Votre analyste vous a indiqué quelques renseignements supplémentaires :
   - Il y a 40 litres d'essence dans la voiture lors de la prise de possession
   - Frais de nettoyage : 30$ par nettoyage (obligatoire pour toutes les locations de plus de 1 jour)
   - Taxes : TVQ 9.975% et TPS 5%
-- Les tarifs doivent être configurables pour l'application. Par exemple, on devrait être capable de modifier facilement le tarif de location par jour, le tarif de l'essence, le tarif du nettoyage et les taxes avec une simple requête SQL (Vous faut-il une table pour cela ?) (5 points) : il n'est pas demandé de créer une interface utilisateur pour cela.
+- Les tarifs doivent être configurables pour l'application. Par exemple, on devrait être capable de modifier facilement le tarif de location par jour, le tarif de l'essence, le tarif du nettoyage et les taxes avec une simple requête SQL (Vous faut-il une table pour cela ?) (5 points). La configuration doit au moins comporter :
+    - TARIF_LOCATION_JOUR
+    - TARIF_ESSENCE_LITRE
+    - TARIF_ESSENCE_FRAIS_FIXE
+    - TARIF_NETTOYAGE
+    - TAUX_TPS
+    - TAUX_TVQ
 
 Dans ce TP, une location représente à la fois une réservation, une location en cours ou une location terminée. Son état est déterminé par les dates réelles :
 - si dateDebutReelle est nulle, la location est prévue ;
@@ -109,7 +115,7 @@ Dans ce TP, une location représente à la fois une réservation, une location e
 ## 3 - À réaliser
 
 - Modifier le fichier `AUTHORS.md` (-10 points si non fait)
-- Compléter l'ERD : types, PK, FK (10 points) - Équipier 1
+- Compléter l'ERD : types, PK, FK (5 points) - Équipier 1
 - Écrire le script SQL permettant d'implanter l'ERD (20 points : clefs, contraintes, champs calculées, tables supplémentaires, etc.) - Équipier 2
 - Créer des données de test (10 points) - Équipier 1
 - Écrire les scripts SQL (un ou plusieurs fichiers dont le nom contient une numérotation indiquant l'ordre des scripts) suivantes (30 points) :
@@ -125,7 +131,8 @@ Dans ce TP, une location représente à la fois une réservation, une location e
   - Créer une voiture (5 points) - Équipier 1
   - Effectuer la prise de possession d'une voiture :  (5 points) - Équipier 2
   - Effectuer le retour d'une voiture (5 points) - Équipier 1
-  - Affiche la facture pour une location (5 points) - Équipier 2
+  - Afficher la facture pour une location (5 points) - Équipier 2
+  - Afficher la configuration et effectuer des modifications de la configuration (5 points) - Équipier 1
 
 Résumé des points :
 
@@ -135,7 +142,7 @@ Résumé des points :
 | 20 | Implémentation de l'ERD |
 | 10 | Données de test |
 | 30 | Procédures |
-| 35 | Application console C# |
+| 40 | Application console C# |
 
 ## 4 - Exemples de factures
 
