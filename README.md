@@ -91,6 +91,7 @@ Votre analyste vous a indiqué quelques renseignements supplémentaires :
 - Pour une voiture, la date de révision est la date de la dernière révision de la voiture : elle peut être nulle si aucune révision n'a été faite
 - Une location a forcément un client et une voiture. La date de début et de fin de location prévue sont obligatoires. La date de début de location réelle et la date de fin de location réelle peuvent être nulles si la location n'est pas encore débutée ou n'est pas terminée
 - Un client ne peut pas louer plus d'une voiture en même temps
+- Les champs essenceDebut et essenceFin représentent une quantité en litres. Ils doivent donc être numériques.
 - La facture est établie au retour de la voiture de location. La durée en jours de location est déterminée par la plus grande valeur obtenable avec la date de fin de location réelle ou la date de fin de location prévue moins la date de début de location réelle ou la date de début de location prévue
 - Pour établir la facture :
   - La location est facturée à la journée : 60$ par jour
