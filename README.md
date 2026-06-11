@@ -1,4 +1,4 @@
-# TP2 - Réservation de voiture
+# TP2 - Location de voitures
 
 ## 1 - Directives
 
@@ -35,49 +35,49 @@ Voici l'ERD qui vous a été fourni par votre analyste :
 erDiagram
 
     VOITURE {
-        string numeroSerie
-        string marque
-        string modele
-        string couleur
-        date dateAchat
-        date dateRevision
-        string descriptionFr
+        TYPE numeroSerie
+        TYPE marque
+        TYPE modele
+        TYPE couleur
+        TYPE dateAchat
+        TYPE dateRevision
+        TYPE descriptionFr
     }
 
     LOCATION {
-        date dateDebutPrevue
-        date dateDebutReelle
-        date dateFinPrevue
-        date dateFinReelle
-        int odometreDebut
-        int odometreFin
-        string essenceDebut
-        string essenceFin
+        TYPE dateDebutPrevue
+        TYPE dateDebutReelle
+        TYPE dateFinPrevue
+        TYPE dateFinReelle
+        TYPE odometreDebut
+        TYPE odometreFin
+        TYPE essenceDebut
+        TYPE essenceFin
     }
 
     CLIENT {
-        string nom
-        string prenom
-        date dateNaissance
-        string numeroPermis
-        string numeroTelephone
+        TYPE nom
+        TYPE prenom
+        TYPE dateNaissance
+        TYPE numeroPermis
+        TYPE numeroTelephone
     }
 
     FACTURE {
-        date dateFacture
-        decimal montantHorsTaxes
-        string description
-        decimal montantTaxesTVQ
-        decimal montantTaxesTPS
-        decimal montantTotal
+        TYPE dateFacture
+        TYPE montantHorsTaxes
+        TYPE description
+        TYPE montantTaxesTVQ
+        TYPE montantTaxesTPS
+        TYPE montantTotal
     }
 
     FACTURE_LIGNE {
-        decimal prixUnitaire
-        int quantite
-        string description
-        decimal tauxTaxesTVQ
-        decimal tauxTaxesTPS
+        TYPE prixUnitaire
+        TYPE quantite
+        TYPE description
+        TYPE tauxTaxesTVQ
+        TYPE tauxTaxesTPS
     }
 
     CLIENT ||--o{ LOCATION : effectue
@@ -100,25 +100,31 @@ Votre analyste vous a indiqué quelques renseignements supplémentaires :
   - Taxes : TVQ 9.975% et TPS 5%
 - Les tarifs doivent être configurables pour l'application. Par exemple, on devrait être capable de modifier facilement le tarif de location par jour, le tarif de l'essence, le tarif du nettoyage et les taxes avec une simple requête SQL (Vous faut-il une table pour cela ?) (5 points) : il n'est pas demandé de créer une interface utilisateur pour cela.
 
+Dans ce TP, une location représente à la fois une réservation, une location en cours ou une location terminée. Son état est déterminé par les dates réelles :
+- si dateDebutReelle est nulle, la location est prévue ;
+- si dateDebutReelle est non nulle et dateFinReelle est nulle, la location est en cours ;
+- si dateFinReelle est non nulle, la location est terminée.
+
 ## 3 - À réaliser
 
 - Modifier le fichier `AUTHORS.md` (-10 points si non fait)
-- Écrire le script SQL permettant d'implanter l'ERD (20 points : clefs, contraintes, champs calculées, tables supplémentaires, etc.)
-- Créer des données de test (10 points)
+- Compléter l'ERD : types, PK, FK (10 points) - Équipier 1
+- Écrire le script SQL permettant d'implanter l'ERD (20 points : clefs, contraintes, champs calculées, tables supplémentaires, etc.) - Équipier 2
+- Créer des données de test (10 points) - Équipier 1
 - Écrire les scripts SQL (un ou plusieurs fichiers dont le nom contient une numérotation indiquant l'ordre des scripts) suivantes (30 points) :
-  - Créer une procédure permettant de renvoyer les voitures disponibles pour une période donnée (une période est définie par une date de début et une date de fin) (5 points)
-  - Créer une procédure permettant de renvoyer l'ensemble des voitures qui n'ont pas été louées depuis plus de 60 jours (5 points)
-  - Créer une procédure permettant de renvoyer les locations du jour courant, donc les prises de possession du jour (5 points)
-  - Créer une procédure permettant de renvoyer les locations revenants au jour courant, donc les retours prévus (5 points)
-  - Créer une procédure ou tout autre type de code SQL permettant de créer une facture pour une location terminée (10 points)
-- Créez une application console C# qui permet (35 points):
-  - Afficher les voitures à préparer ou à recevoir pour la journée courante (prises de possession / retours) (5 points)
-  - Créer une location (5 points)
-  - Créer une personne (5 points)
-  - Créer une voiture (5 points)
-  - Effectuer la prise de possession d'une voiture :  (5 points)
-  - Effectuer le retour d'une voiture (5 points)
-  - Affiche la facture pour une location (5 points)
+  - Créer une procédure permettant de renvoyer les voitures disponibles pour une période donnée (une période est définie par une date de début et une date de fin) (5 points) - Équipier 1
+  - Créer une procédure permettant de renvoyer l'ensemble des voitures qui n'ont pas été louées depuis plus de 60 jours (5 points) - Équipier 2
+  - Créer une procédure permettant de renvoyer les locations du jour courant, donc les prises de possession du jour (5 points) - Équipier 1
+  - Créer une procédure permettant de renvoyer les locations revenants au jour courant, donc les retours prévus (5 points) - Équipier 2
+  - Créer une procédure ou tout autre type de code SQL permettant de créer une facture pour une location terminée (10 points) - Équipier 1
+- Créez une application console C# qui permet (35 points) : créez des classes partielles dont les fichiers sont préfixés par `Equipier1_` et `Equipier2_` pour les dépôts, couche métier, UI
+  - Afficher les voitures à préparer ou à recevoir pour la journée courante (prises de possession / retours) (5 points) - Équipier 2
+  - Créer une location (5 points) - Équipier 1
+  - Créer une personne (5 points) - Équipier 2
+  - Créer une voiture (5 points) - Équipier 1
+  - Effectuer la prise de possession d'une voiture :  (5 points) - Équipier 2
+  - Effectuer le retour d'une voiture (5 points) - Équipier 1
+  - Affiche la facture pour une location (5 points) - Équipier 2
 
 Résumé des points :
 
@@ -146,10 +152,10 @@ Ces exemples de factures ont été générés par ChatGPT avec le modèle GPT-4o
 
 | Description                | Prix Unitaire| Quantité | Total HT       | Total TVQ      | Total TPS    | Total TTC   |
 |----------------------------|--------------|----------|----------------|----------------|--------------|-------------|
-| Location voiture            |     60.00 $  |    3     |     180.00 $   |     17.96 $    |     9.00 $   |   206.96 $  |
-| Frais de nettoyage          |     30.00 $  |    1     |      30.00 $   |      2.99 $    |     1.50 $   |    34.49 $  |
+| Location voiture           |     60.00 $  |    3     |     180.00 $   |     17.96 $    |     9.00 $   |   206.96 $  |
+| Frais de nettoyage         |     30.00 $  |    1     |      30.00 $   |      2.99 $    |     1.50 $   |    34.49 $  |
 |----------------------------|--------------|----------|----------------|----------------|--------------|-------------|
-| Total                       |              |          |                |                |              |   241.45 $  |
+| Total                      |              |          |                |                |              |   241.45 $  |
 
 ### Exemple 2 - Location terminée avec carburant manquant
 
@@ -163,12 +169,12 @@ Ces exemples de factures ont été générés par ChatGPT avec le modèle GPT-4o
 
 | Description                | Prix Unitaire| Quantité | Total HT       | Total TVQ      | Total TPS    | Total TTC   |
 |----------------------------|--------------|----------|----------------|----------------|--------------|-------------|
-| Location voiture            |     60.00 $  |    4     |     240.00 $   |     23.94 $    |    12.00 $   |   275.94 $  |
-| Frais de nettoyage          |     30.00 $  |    1     |      30.00 $   |      2.99 $    |     1.50 $   |    34.49 $  |
-| Frais d'essence             |      3.00 $  |   10     |      30.00 $   |      2.99 $    |     1.50 $   |    34.49 $  |
-| Frais fixes essence         |     50.00 $  |    1     |      50.00 $   |      4.99 $    |     2.50 $   |    57.49 $  |
+| Location voiture           |     60.00 $  |    4     |     240.00 $   |     23.94 $    |    12.00 $   |   275.94 $  |
+| Frais de nettoyage         |     30.00 $  |    1     |      30.00 $   |      2.99 $    |     1.50 $   |    34.49 $  |
+| Frais d'essence            |      3.00 $  |   10     |      30.00 $   |      2.99 $    |     1.50 $   |    34.49 $  |
+| Frais fixes essence        |     50.00 $  |    1     |      50.00 $   |      4.99 $    |     2.50 $   |    57.49 $  |
 |----------------------------|--------------|----------|----------------|----------------|--------------|-------------|
-| Total                       |              |          |                |                |              |   402.41 $  |
+| Total                      |              |          |                |                |              |   402.41 $  |
 
 ### Exemple 3 - Location prolongée avec carburant manquant
 - Client : Pierre Leblanc
@@ -181,12 +187,12 @@ Ces exemples de factures ont été générés par ChatGPT avec le modèle GPT-4o
 
 | Description                | Prix Unitaire| Quantité | Total HT       | Total TVQ      | Total TPS    | Total TTC   |
 |----------------------------|--------------|----------|----------------|----------------|--------------|-------------|
-| Location voiture            |     60.00 $  |    6     |     360.00 $   |     35.91 $    |    18.00 $   |   413.91 $  |
-| Frais de nettoyage          |     30.00 $  |    1     |      30.00 $   |      2.99 $    |     1.50 $   |    34.49 $  |
-| Frais d'essence             |      3.00 $  |   20     |      60.00 $   |      5.99 $    |     3.00 $   |    68.99 $  |
-| Frais fixes essence         |     50.00 $  |    1     |      50.00 $   |      4.99 $    |     2.50 $   |    57.49 $  |
+| Location voiture           |     60.00 $  |    6     |     360.00 $   |     35.91 $    |    18.00 $   |   413.91 $  |
+| Frais de nettoyage         |     30.00 $  |    1     |      30.00 $   |      2.99 $    |     1.50 $   |    34.49 $  |
+| Frais d'essence            |      3.00 $  |   20     |      60.00 $   |      5.99 $    |     3.00 $   |    68.99 $  |
+| Frais fixes essence        |     50.00 $  |    1     |      50.00 $   |      4.99 $    |     2.50 $   |    57.49 $  |
 |----------------------------|--------------|----------|----------------|----------------|--------------|-------------|
-| Total                       |              |          |                |                |              |   574.88 $  |
+| Total                      |              |          |                |                |              |   574.88 $  |
 
 
 ## 5 - Contraintes
@@ -196,9 +202,7 @@ Ces exemples de factures ont été générés par ChatGPT avec le modèle GPT-4o
 - Partage entre équipier de code avec Git
 - Remise complète finale sur Léa
 - L'évaluation tient compte :
-  - du style et de la structure du code : elle doit être similaire à celle proposée en cours
+  - du style et de la structure du code : elle doit être similaire à celle proposée en cours (Découpage en couches, fichiers SQL idempotents) 
   - des pratiques de programmation apprises dans le programme doivent être appliquées
-  - de la participation de chaque coéquipier avec la formule suivante : $ Min(100, note*50% + note*Min(50%,%participation))$, soit 50% de la note globale + %participation plafonné à 50% de la note globale. (Ex. note globale 110% et participation 50/50 : donne 100% à chaque personne, note globale 90 et participation 70/30 note : 90 et 72)
-  - la participation est évaluée par les commits sur Git. Si une manipulation de l'historique est détectée, l'équipe sera pénalisée avec une participation maximal de 40% par partenaire. (Venir voir l'enseignant dès que détecté avant de tomber sur un problème au moment de la correction !). Actuellement, GitInspector est utilisé pour évaluer cette participation
 
 Tout partage de code, d'explication, de bouts de texte, etc. est considéré comme du plagiat. Pour plus de détails, consultez le site (et ses vidéos) [Sois intègre du Cégep de Sainte-Foy](http://csfoy.ca/soisintegre) ainsi que [l'article 6.1.12 de la PÉA](https://www.csfoy.ca/fileadmin/documents/notre_cegep/politiques_et_reglements/5.9_PolitiqueEvaluationApprentissages_2019.pdf)
