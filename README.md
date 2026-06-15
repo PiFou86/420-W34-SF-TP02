@@ -11,11 +11,12 @@
 - L’emprunt ou la copie de code ou de portions de code est interdite
 - Tout constat de plagiat, tricherie ou fraude sera automatiquement déclaré à la Direction et les sanctions prévues seront appliquées
 - L'utilisation de l'IA et de toutes autres sources est considérée comme du plagiat si non documentée en tant que source (Si ce n'est pas dans votre cours, c'est qu'il faut une référence). Par exemple, si vous utilisez une requête trouvée sur StackOverflow, vous devez faire un commentaire dans votre code indiquant que vous avez utilisé cette requête et fournir un lien vers la source. Si vous utilisez une requête générée par une IA, vous devez faire un commentaire dans votre code indiquant que vous avez utilisé une IA pour générer cette requête et fournir le lien de partage de la discussion avec l'IA. 
-- Toute source externe au matériel du cours doit être explicitement documentée ou sera considéré comme du plagiat
-- Vous devez utiliser votre dépôt Git pour faire votre travail : si une situation particulière est détectée, vos commits moduleront votre note dans le groupe et peut même aller jusqu'à un zéro en cas de non participation. (Attention à l'utilisation de 4 mains sur un compte Git !)
-- Durée : 3 x 3 heures + travail à la maison
-- Plate forme : Microsoft SQL Server, .Net 8.0, Entity Framework, Visual Studio 2022, Git, GitHub, Léa
+- Toute source externe au matériel du cours doit être explicitement documentée ou sera considérée comme du plagiat
+- Vous devez utiliser votre dépôt GitHub pour faire votre travail : si une situation particulière est détectée, vos commits moduleront votre note dans le groupe et peuvent même aller jusqu'à un zéro en cas de non participation. (Attention à l'utilisation de 4 mains sur un compte Git !)
+- Durée : 4 x 3 heures en classe + travail à la maison
+- Plateforme : Microsoft SQL Server, .Net 8.0, Entity Framework, Visual Studio 2022, Git, GitHub, Léa
 - Le sujet peut être mis à jour à cette adresse : https://github.com/PiFou86/420-W34-SF-TP02/blob/main/README.md
+- Noté sur 110 points au total : 55 par équipier ramené sur 100%
 
 ### 1.2 - À remettre sur la plateforme d'enseignement Léa
 
@@ -99,7 +100,7 @@ Votre analyste vous a indiqué quelques renseignements supplémentaires :
   - Il y a 40 litres d'essence dans la voiture lors de la prise de possession
   - Frais de nettoyage : 30$ par nettoyage (obligatoire pour toutes les locations de plus de 1 jour)
   - Taxes : TVQ 9.975% et TPS 5%
-- Les tarifs doivent être configurables pour l'application. Par exemple, on devrait être capable de modifier facilement le tarif de location par jour, le tarif de l'essence, le tarif du nettoyage et les taxes avec une simple requête SQL (Vous faut-il une table pour cela ?) (5 points). La configuration doit au moins comporter :
+- Les tarifs doivent être configurables pour l'application. Par exemple, on devrait être capable de modifier facilement le tarif de location par jour, le tarif de l'essence, le tarif du nettoyage et les taxes avec une simple requête SQL (Vous faut-il une table pour cela ? Complétez le schéma et le script de création). La configuration doit au moins comporter :
     - TARIF_LOCATION_JOUR
     - TARIF_ESSENCE_LITRE
     - TARIF_ESSENCE_FRAIS_FIXE
@@ -116,15 +117,16 @@ Dans ce TP, une location représente à la fois une réservation, une location e
 
 - Modifier le fichier `AUTHORS.md` (-10 points si non fait)
 - Compléter l'ERD : types, PK, FK (5 points) - Équipier 1
-- Écrire le script SQL permettant d'implanter l'ERD (20 points : clefs, contraintes, champs calculées, tables supplémentaires, etc.) - Équipier 2
+- Écrire le script SQL permettant d'implanter l'ERD (20 points : clefs, contraintes, champs calculés, tables supplémentaires, etc.) - Équipier 2
 - Créer des données de test et de configuration (10 points) - Équipier 1
-- Écrire les scripts SQL (un ou plusieurs fichiers dont le nom contient une numérotation indiquant l'ordre des scripts) suivantes (30 points) :
+- Écrire les scripts SQL (un ou plusieurs fichiers dont le nom contient une numérotation indiquant l'ordre des scripts) suivants (30 points) :
   - Créer une procédure permettant de renvoyer les voitures disponibles pour une période donnée (une période est définie par une date de début et une date de fin) (5 points) - Équipier 1
   - Créer une procédure permettant de renvoyer l'ensemble des voitures qui n'ont pas été louées depuis plus de 60 jours (5 points) - Équipier 2
   - Créer une procédure permettant de renvoyer les locations du jour courant, donc les prises de possession du jour (5 points) - Équipier 1
-  - Créer une procédure permettant de renvoyer les locations revenants au jour courant, donc les retours prévus (5 points) - Équipier 2
+  - Créer une procédure permettant de renvoyer les locations revenant au jour courant, donc les retours prévus (5 points) - Équipier 2
   - Créer une procédure ou tout autre type de code SQL permettant de créer une facture pour une location terminée (10 points) - Équipier 1
-- Créez une application console C# qui permet (35 points) : créez des classes partielles dont les fichiers sont préfixés par `Equipier1_` et `Equipier2_` pour les dépôts, couche métier, UI
+- Créez une application console C# permettant de créez des classes partielles dont les fichiers sont préfixés par `Equipier1_` et `Equipier2_` pour les dépôts, couche métier, UI (45 points)
+  - Création de la structure des projets, injection de dépendance et configuration applicative (appsettings.json) - (5 points) - Équipier 2
   - Afficher les voitures à préparer ou à recevoir pour la journée courante (prises de possession / retours) (5 points) - Équipier 2
   - Créer une location (5 points) - Équipier 1
   - Créer un client (5 points) - Équipier 2
@@ -142,7 +144,7 @@ Résumé des points :
 | Implémentation de l'ERD en SQL            |          0 |         20 |      20 |
 | Données de test                           |         10 |          0 |      10 |
 | Procédures SQL                            |         20 |         10 |      30 |
-| Application console C#                    |         20 |         20 |      40 |
+| Application console C#                    |         20 |         25 |      40 |
 | **Total**                                 |     **55** |     **55** | **110** |
 
 
@@ -209,7 +211,7 @@ Ces exemples de factures ont été générés par ChatGPT avec le modèle GPT-4o
 
 - N'oubliez pas de respecter les nomenclatures demandées en cours
 - Optimisez vos requêtes
-- Partage entre équipier de code avec Git
+- Partage du code entre les équipiers avec Git
 - Remise complète finale sur Léa
 - L'évaluation tient compte :
   - du style et de la structure du code : elle doit être similaire à celle proposée en cours (Découpage en couches, fichiers SQL idempotents) 
